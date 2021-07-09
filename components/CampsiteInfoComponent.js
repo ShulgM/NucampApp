@@ -17,7 +17,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     postFavorite: campsiteId => (postFavorite(campsiteId)),
-    postComment: campsiteId => (postComment(campsiteId, rating, author, text))
+    postComment: (campsiteId, rating, author, text) => (postComment(campsiteId, rating, author, text))
 };
 
 
@@ -57,10 +57,8 @@ function RenderCampsite(props) {
                     ],
                     { cancelable: false }
                 );
-            }else if (recognizeDragRight(gestureState)) {
-                Alert.alert(
-                    props.onShowModal()
-                );
+            }else if (recognizeComment(gestureState)) {
+                props.onShowModal();
             }
             
         }
